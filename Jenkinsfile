@@ -92,6 +92,7 @@ node {
                     output = bat(returnStdout: true, script: "${toolbelt}sfdx force:package:create --package ${PACKAGE_NAME} --installationkeybypass --wait 10 --json --targetdevhubusername HubOrg").trim()
                     output = output.readLines().drop(1).join(" ")
                 }
+            }
 
             // -------------------------------------------------------------------------
             // Create package version.
