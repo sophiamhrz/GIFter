@@ -8,7 +8,7 @@ node {
     def SF_USERNAME=env.SF_USERNAME
     def SERVER_KEY_CREDENTALS_ID=env.SERVER_KEY_CREDENTALS_ID
     //def TEST_LEVEL='RunLocalTests'
-    def PACKAGE_NAME='GIFter'
+    //def PACKAGE_NAME='GIFter'
     def PACKAGE_VERSION
     def SF_INSTANCE_URL = env.SF_INSTANCE_URL ?: "https://login.salesforce.com"
 
@@ -44,6 +44,12 @@ node {
                 }
             }
 
+            stage('Delete Package Install Scratch Org') {
+                rc = command "${toolbelt}sfdx force:org:delete --targetusername ciorg --noprompt"
+                if (rc != 0) {
+                    error 'Salesforce package install scratch org deletion failed.'
+                }
+            }
 
             // -------------------------------------------------------------------------
             // Create new scratch org to test your code.
@@ -87,9 +93,9 @@ node {
 
             stage('Create Package') {
                 if (isUnix()) {
-                    output = sh returnStdout: true, script: "${toolbelt}sfdx force:package:create --package ${PACKAGE_NAME} --installationkeybypass --wait 10 --json --targetdevhubusername HubOrg"
+                    output = sh returnStdout: true, script: "${toolbelt}sfdx force:package:create --package GIFter --installationkeybypass --wait 10 --json --targetdevhubusername HubOrg"
                 } else {
-                    output = bat(returnStdout: true, script: "${toolbelt}sfdx force:package:create --package ${PACKAGE_NAME} --installationkeybypass --wait 10 --json --targetdevhubusername HubOrg").trim()
+                    output = bat(returnStdout: true, script: "${toolbelt}sfdx force:package:create --package GIFter --installationkeybypass --wait 10 --json --targetdevhubusername HubOrg").trim()
                     output = output.readLines().drop(1).join(" ")
                 }
             }
@@ -100,9 +106,9 @@ node {
 
             stage('Create Package Version') {
                 if (isUnix()) {
-                    output = sh returnStdout: true, script: "${toolbelt}sfdx force:package:version:create --package ${PACKAGE_NAME} --installationkeybypass --wait 10 --json --targetdevhubusername HubOrg"
+                    output = sh returnStdout: true, script: "${toolbelt}sfdx force:package:version:create --package GIFter --installationkeybypass --wait 10 --json --targetdevhubusername HubOrg"
                 } else {
-                    output = bat(returnStdout: true, script: "${toolbelt}sfdx force:package:version:create --package ${PACKAGE_NAME} --installationkeybypass --wait 10 --json --targetdevhubusername HubOrg").trim()
+                    output = bat(returnStdout: true, script: "${toolbelt}sfdx force:package:version:create --package GIFter --installationkeybypass --wait 10 --json --targetdevhubusername HubOrg").trim()
                     output = output.readLines().drop(1).join(" ")
                 }
 
