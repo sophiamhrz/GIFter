@@ -93,9 +93,11 @@ node {
 
             stage('Create Package') {
                 if (isUnix()) {
-                    output = sh returnStdout: true, script: "${toolbelt}sfdx force:package:create --package GIFter --installationkeybypass --wait 10 --json --targetdevhubusername HubOrg"
+                    output = sh returnStdout: true, script: "${toolbelt}sfdx force:package:create --name GIFter --description "Using GIPHY to find GIFs and post to Chatter" --path force-app --packagetype Unlocked --installationkeybypass --wait 10 --json --targetdevhubusername HubOrg"
+                   // sfdx force:package:create --package GIFter --installationkeybypass --wait 10 --json --targetdevhubusername HubOrg
                 } else {
-                    output = bat(returnStdout: true, script: "${toolbelt}sfdx force:package:create --package GIFter --installationkeybypass --wait 10 --json --targetdevhubusername HubOrg").trim()
+                    output = bat(returnStdout: true, script: "${toolbelt}sfdx force:package:create --name GIFter --description "Using GIPHY to find GIFs and post to Chatter" --path force-app --packagetype Unlocked --installationkeybypass --wait 10 --json --targetdevhubusername HubOrg").trim()
+                    //sfdx force:package:create --package GIFter --installationkeybypass --wait 10 --json --targetdevhubusername HubOrg").trim()
                     output = output.readLines().drop(1).join(" ")
                 }
             }
@@ -106,9 +108,11 @@ node {
 
             stage('Create Package Version') {
                 if (isUnix()) {
-                    output = sh returnStdout: true, script: "${toolbelt}sfdx force:package:version:create --package GIFter --installationkeybypass --wait 10 --json --targetdevhubusername HubOrg"
+                    output = sh returnStdout: true, script: "${toolbelt}sfdx force:package:version:create --package GIFter --path force-app --installationkeybypass --wait 10 --json --targetdevhubusername HubOrg"
+                    //sfdx force:package:version:create --package GIFter --installationkeybypass --wait 10 --json --targetdevhubusername HubOrg
                 } else {
-                    output = bat(returnStdout: true, script: "${toolbelt}sfdx force:package:version:create --package GIFter --installationkeybypass --wait 10 --json --targetdevhubusername HubOrg").trim()
+                    output = bat(returnStdout: true, script: "${toolbelt}sfdx force:package:version:create --package GIFter --path force-app --installationkeybypass --wait 10 --json --targetdevhubusername HubOrg").trim()
+                    //sfdx force:package:version:create --package GIFter --installationkeybypass --wait 10 --json --targetdevhubusername HubOrg").trim()
                     output = output.readLines().drop(1).join(" ")
                 }
 
