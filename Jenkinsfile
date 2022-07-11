@@ -111,13 +111,14 @@ node {
             // Delete test scratch org.
             // -------------------------------------------------------------------------
 
+        /**
             stage('Delete Test Scratch Org') {
                 rc = command "${toolbelt}sfdx force:org:delete --targetusername ciorg --noprompt"
                 if (rc != 0) {
                     error 'Salesforce test scratch org deletion failed.'
                 }
             }
-
+ */ 
 
             // -------------------------------------------------------------------------
             // Create package version.
@@ -185,12 +186,12 @@ node {
             // Run unit tests in package install scratch org.
             // -------------------------------------------------------------------------
 
-            stage('Run Tests In Package Install Scratch Org') {
+        /**   stage('Run Tests In Package Install Scratch Org') {
                 rc = command "${toolbelt}sfdx force:apex:test:run --targetusername installorg --resultformat tap --codecoverage --testlevel ${TEST_LEVEL} --wait 10"
                 if (rc != 0) {
                     error 'Salesforce unit test run in pacakge install scratch org failed.'
                 }
-            }
+            } */ 
 
 
             // -------------------------------------------------------------------------
