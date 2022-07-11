@@ -1,0 +1,113 @@
+{
+  "serverMaxRevisionCounter": 18,
+  "sourceMembers": {
+    "Profile__Admin": {
+      "serverRevisionCounter": 1,
+      "lastRetrievedFromServer": null,
+      "memberType": "Profile",
+      "isNameObsolete": false
+    },
+    "ApexClass__ChatterHelper": {
+      "serverRevisionCounter": 2,
+      "lastRetrievedFromServer": 2,
+      "memberType": "ApexClass",
+      "isNameObsolete": false
+    },
+    "CustomTab__GIFter": {
+      "serverRevisionCounter": 13,
+      "lastRetrievedFromServer": 13,
+      "memberType": "CustomTab",
+      "isNameObsolete": false
+    },
+    "CustomApplication__GIFter": {
+      "serverRevisionCounter": 14,
+      "lastRetrievedFromServer": 14,
+      "memberType": "CustomApplication",
+      "isNameObsolete": false
+    },
+    "StaticResource__GIPHY": {
+      "serverRevisionCounter": 3,
+      "lastRetrievedFromServer": 3,
+      "memberType": "StaticResource",
+      "isNameObsolete": false
+    },
+    "StaticResource__jquery331": {
+      "serverRevisionCounter": 4,
+      "lastRetrievedFromServer": 4,
+      "memberType": "StaticResource",
+      "isNameObsolete": false
+    },
+    "CspTrustedSite__GIPHY": {
+      "serverRevisionCounter": 18,
+      "lastRetrievedFromServer": 18,
+      "memberType": "CspTrustedSite",
+      "isNameObsolete": false
+    },
+    "AuraDefinitionBundle__SearchGIPHY": {
+      "serverRevisionCounter": 5,
+      "lastRetrievedFromServer": 5,
+      "memberType": "AuraDefinitionBundle",
+      "isNameObsolete": false
+    },
+    "AuraDefinition__SearchGIPHY/SearchGIPHY.cmp": {
+      "serverRevisionCounter": 6,
+      "lastRetrievedFromServer": 6,
+      "memberType": "AuraDefinition",
+      "isNameObsolete": false
+    },
+    "AuraDefinition__SearchGIPHY/SearchGIPHYController.js": {
+      "serverRevisionCounter": 7,
+      "lastRetrievedFromServer": 7,
+      "memberType": "AuraDefinition",
+      "isNameObsolete": false
+    },
+    "AuraDefinition__SearchGIPHY/SearchGIPHYHelper.js": {
+      "serverRevisionCounter": 8,
+      "lastRetrievedFromServer": 8,
+      "memberType": "AuraDefinition",
+      "isNameObsolete": false
+    },
+    "AuraDefinition__SearchGIPHY/SearchGIPHY.css": {
+      "serverRevisionCounter": 9,
+      "lastRetrievedFromServer": 9,
+      "memberType": "AuraDefinition",
+      "isNameObsolete": false
+    },
+    "AuraDefinition__SearchGIPHY/SearchGIPHY.svg": {
+      "serverRevisionCounter": 10,
+      "lastRetrievedFromServer": 10,
+      "memberType": "AuraDefinition",
+      "isNameObsolete": false
+    },
+    "FlexiPage__GIFter": {
+      "serverRevisionCounter": 11,
+      "lastRetrievedFromServer": 11,
+      "memberType": "FlexiPage",
+      "isNameObsolete": false
+    },
+    "FlexiPage__GIFter_UtilityBar": {
+      "serverRevisionCounter": 12,
+      "lastRetrievedFromServer": 12,
+      "memberType": "FlexiPage",
+      "isNameObsolete": false
+    },
+    "PermissionSet__GIFter": {
+      "serverRevisionCounter": 15,
+      "lastRetrievedFromServer": 15,
+      "memberType": "PermissionSet",
+      "isNameObsolete": false
+    },
+    "RemoteSiteSetting__GiphyMedia0": {
+      "serverRevisionCounter": 16,
+      "lastRetrievedFromServer": 16,
+      "memberType": "RemoteSiteSetting",
+      "isNameObsolete": false
+    },
+    "RemoteSiteSetting__GiphyMedia1": {
+      "serverRevisionCounter": 17,
+      "lastRetrievedFromServer": 17,
+      "memberType": "RemoteSiteSetting",
+      "isNameObsolete": false
+    }
+  }
+}
