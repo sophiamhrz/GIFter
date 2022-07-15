@@ -44,81 +44,80 @@ node {
                 }
             }
 
-            stage('Display Test Scratch Org') {
-                rc = command "${toolbelt}sfdx force:org:display --targetusername ciorg"
-                if (rc != 0) {
-                    error 'Salesforce test scratch org display failed.'
-                }
-            }
-
-            stage('Delete Package Install Scratch Org') {
-                rc = command "${toolbelt}sfdx force:org:delete --targetusername ciorg --noprompt"
-                if (rc != 0) {
-                    error 'Salesforce package install scratch org deletion failed.'
-                }
-            }
+            // stage('Display Test Scratch Org') {
+            //     rc = command "${toolbelt}sfdx force:org:list"
+            //     if (rc != 0) {
+            //         error 'Salesforce test scratch org display failed.'
+            //     }
+            // }
+            // stage('Delete Package Install Scratch Org') {
+            //     rc = command "${toolbelt}sfdx force:org:delete -u test-uswaoidcaxyf@example.com --noprompt"
+            //     if (rc != 0) {
+            //         error 'Salesforce package install scratch org deletion failed.'
+            //     }
+            // }
 
             // -------------------------------------------------------------------------
             // Create new scratch org to test your code.
             // -------------------------------------------------------------------------
 
 
-            stage('Create Test Scratch Org') {
-                rc = command "${toolbelt}sfdx force:org:create --targetdevhubusername HubOrg --setdefaultusername --definitionfile config/project-scratch-def.json --setalias ciorg --wait 10 --durationdays 1"
-                if (rc != 0) {
-                    error 'Salesforce test scratch org creation failed.'
-                }
-            }
+            // stage('Create Test Scratch Org') {
+            //     rc = command "${toolbelt}sfdx force:org:create --targetdevhubusername HubOrg --setdefaultusername --definitionfile config/project-scratch-def.json --setalias ciorg --wait 10 --durationdays 1"
+            //     if (rc != 0) {
+            //         error 'Salesforce test scratch org creation failed.'
+            //     }
+            // }
 
 
             // -------------------------------------------------------------------------
             // Display test scratch org info.
             // -------------------------------------------------------------------------
 
-            stage('Display Test Scratch Org') {
-                rc = command "${toolbelt}sfdx force:org:display --targetusername ciorg"
-                if (rc != 0) {
-                    error 'Salesforce test scratch org display failed.'
-                }
-            }
+            // stage('Display Test Scratch Org') {
+            //     rc = command "${toolbelt}sfdx force:org:display --targetusername ciorg"
+            //     if (rc != 0) {
+            //         error 'Salesforce test scratch org display failed.'
+            //     }
+            // }
 
 
             // -------------------------------------------------------------------------
             // Push source to test scratch org.
             // -------------------------------------------------------------------------
-
+/*
             stage('Push To Test Scratch Org') {
                 rc = command "${toolbelt}sfdx force:source:push --targetusername ciorg"
                 if (rc != 0) {
                     error 'Salesforce push to test scratch org failed.'
                 }
             }
-
+*/
 
             // -------------------------------------------------------------------------
             // Run unit tests in test scratch org.
             // -------------------------------------------------------------------------
 
-            stage('Run Tests In Test Scratch Org') {
+/*            stage('Run Tests In Test Scratch Org') {
                 rc = command "${toolbelt}sfdx force:apex:test:run --targetusername ciorg --wait 10 --resultformat tap --codecoverage --testlevel ${TEST_LEVEL}"
                 if (rc != 0) {
                     error 'Salesforce unit test run in test scratch org failed.'
                 }
-            }
+            }*/
 
 
             // -------------------------------------------------------------------------
             // Delete test scratch org.
             // -------------------------------------------------------------------------
 
-        /**
+/*        
             stage('Delete Test Scratch Org') {
                 rc = command "${toolbelt}sfdx force:org:delete --targetusername ciorg --noprompt"
                 if (rc != 0) {
                     error 'Salesforce test scratch org deletion failed.'
                 }
-            }
- */ 
+            }*/
+  
 
             // -------------------------------------------------------------------------
             // Create package version.
@@ -126,8 +125,11 @@ node {
 
             stage('Create Package Version') {
                 if (isUnix()) {
+                    echo 'Sophiya'
                     output = sh returnStdout: true, script: "${toolbelt}sfdx force:package:version:create --package ${PACKAGE_NAME} --installationkeybypass --wait 10 --json --targetdevhubusername HubOrg"
-                } else {
+                   
+                    
+                } else { echo 'xyz'
                     output = bat(returnStdout: true, script: "${toolbelt}sfdx force:package:version:create --package ${PACKAGE_NAME} --installationkeybypass --wait 10 --json --targetdevhubusername HubOrg").trim()
                     output = output.readLines().drop(1).join(" ")
                 }
@@ -204,6 +206,7 @@ node {
                     error 'Salesforce package install scratch org deletion failed.'
                 }
             }
+
         }
     }
 }
